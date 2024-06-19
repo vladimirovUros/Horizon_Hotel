@@ -19,6 +19,6 @@ namespace Implementation
 
         public string LastName => "Unauthorized";
 
-        public IEnumerable<int> AllowedUseCases => new List<int> { 1, 22, 32 };
+        public IEnumerable<int> AllowedUseCases => new List<int> { 1, 32, 22};
     }
 }
