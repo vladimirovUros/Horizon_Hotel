@@ -8,10 +8,12 @@ namespace API.Core
     public class JwtApplicationActorProvider : IApplicationActorProvider
     {
         private string authorizationHeader;
+        private readonly ITokenStorage _tokenStorage;
 
-        public JwtApplicationActorProvider(string authorizationHeader)
+        public JwtApplicationActorProvider(string authorizationHeader, ITokenStorage storage)
         {
             this.authorizationHeader = authorizationHeader;
+            _tokenStorage = storage;
         }
 
         public IApplicationActor GetActor()
@@ -28,6 +30,25 @@ namespace API.Core
             var tokenObj = handler.ReadJwtToken(token);
 
             var claims = tokenObj.Claims;
+
+            //var jtiClaim = claims.FirstOrDefault(x => x.Type == "jti")?.Value;
+            Guid guid = new Guid(claims.First(x => x.Type == "jti").Value);
+
+            if (!_tokenStorage.Exists(guid))
+            {
+                return new UnathorizedActor();
+            }
+
+            //if (string.IsNullOrEmpty(jtiClaim) || !Guid.TryParse(jtiClaim, out Guid jtiGuid))
+            //{
+            //    return new UnathorizedActor();
+            //}
+
+            //if (!_tokenStorage.Exists(jtiGuid))
+            //{
+            //    return new UnathorizedActor();
+            //}
+
 
             var claim = claims.First(x => x.Type == "jti").Value;
 

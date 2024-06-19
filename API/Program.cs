@@ -57,8 +57,9 @@ namespace API
                 var authHeader = request.Headers.Authorization.ToString(); //moze i ["authorization]";
 
                 var context = x.GetService<HotelHorizonContext>();
+                var tokenStorage = x.GetService<ITokenStorage>();
 
-                return new JwtApplicationActorProvider(authHeader);
+                return new JwtApplicationActorProvider(authHeader, tokenStorage);
             });
 
             builder.Services.AddTransient(x =>
