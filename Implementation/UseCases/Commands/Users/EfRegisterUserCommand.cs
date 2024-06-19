@@ -55,8 +55,49 @@ namespace Implementation.UseCases.Commands.Users
                     },
                     new UserUseCase
                     {
+                        UseCaseId = 21
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 22
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 23
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 24
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 25
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 27
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 28
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 29
+                    },
+                    new UserUseCase
+                    {
                         UseCaseId = 32
                     },
+                    new UserUseCase
+                    {
+                        UseCaseId = 35
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 36
+                    }
+
                 }
             };
 
