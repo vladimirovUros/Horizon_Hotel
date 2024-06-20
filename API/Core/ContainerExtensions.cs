@@ -162,6 +162,9 @@ namespace API.Core
             services.AddAutoMapper(typeof(EfGetAuditLogsQuery).Assembly);
             services.AddTransient<IGetAuditLogsQuery, EfGetAuditLogsQuery>();
 
+            services.AddTransient<UpdateUserAccessDtoValidator>();
+            services.AddTransient<IUpdateUseAccessCommand, EfUpdateUserAcessCommand>();
+
 
 
             //var config = new MapperConfiguration(cfg =>

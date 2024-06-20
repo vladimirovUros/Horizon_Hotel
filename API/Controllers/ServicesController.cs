@@ -22,13 +22,11 @@ namespace API.Controllers
         }
 
         // GET: api/<ServiceController>
-        [Authorize]
         [HttpGet]
         public IActionResult Get([FromQuery] SearchService search, [FromServices] IGetServicesQuery query) =>
             Ok(_useCaseHandler.HandleQuery(query, search));
 
         // GET api/<ServiceController>/5
-        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id, [FromServices] IGetServiceQuery query) =>
             Ok(_useCaseHandler.HandleQuery(query, id));

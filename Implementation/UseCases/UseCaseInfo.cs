@@ -21,7 +21,7 @@ namespace Implementation.UseCases
         //    .Where(t => type.IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract);
         //var useCases = types.Select(t => (IUseCase)Activator.CreateInstance(t));
         //return useCases.Select(uc => uc.Id);
-        public static int MaxUseCaseId => 39;
+        public static int MaxUseCaseId => 40;
     }
 }
 

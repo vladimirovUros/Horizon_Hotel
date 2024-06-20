@@ -22,13 +22,11 @@ namespace API.Controllers
         }
 
         // GET: api/<BedsController>
-        [Authorize]
         [HttpGet]
         public IActionResult Get([FromQuery] SearchBed search, [FromServices] IGetBedsQuery query) => 
             Ok(_useCaseHandler.HandleQuery(query, search));
 
         // GET api/<BedsController>/5
-        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id, [FromServices] IGetBedQuery query) =>
             Ok(_useCaseHandler.HandleQuery(query, id));

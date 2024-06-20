@@ -23,7 +23,6 @@ namespace API.Controllers
         }
 
         // GET: api/<TypesController>
-        [Authorize]
         [HttpGet]
         public IActionResult Get([FromQuery] SearchType search, [FromServices] IGetTypesQuery query) =>
             Ok(_useCaseHandler.HandleQuery(query, search));

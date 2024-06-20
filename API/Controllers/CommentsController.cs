@@ -21,7 +21,6 @@ namespace API.Controllers
         }
 
         // GET: api/<CommentsController>
-        [Authorize]
         [HttpGet]
         public IActionResult Get([FromQuery] SearchComment search, [FromServices] IGetCommentsQuery query) =>
             Ok(_useCaseHandler.HandleQuery(query, search));

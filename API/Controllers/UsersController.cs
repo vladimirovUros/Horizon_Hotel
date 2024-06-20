@@ -1,4 +1,5 @@
 ﻿using Application.DTO.Users;
+using Application.DTO.UserUseCases;
 using Application.UseCases;
 using Application.UseCases.Commands.Users;
 using Application.UseCases.Queries.Users;
@@ -70,6 +71,14 @@ namespace API.Controllers
             _useCaseHandler.HandleCommand(command, id);
 
             return StatusCode(204);
+        }
+        [HttpPut("{id}/access")]
+        public IActionResult ModifyAccess(int id, [FromBody] UpdateUserAccessDto dto,
+                                                  [FromServices] IUpdateUseAccessCommand command)
+        {
+            dto.UserId = id;
+            _useCaseHandler.HandleCommand(command, dto);
+            return NoContent();
         }
     }
 }

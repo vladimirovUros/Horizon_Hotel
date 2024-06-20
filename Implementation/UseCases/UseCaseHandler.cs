@@ -12,7 +12,8 @@ namespace Implementation.UseCases
     {
         private readonly IApplicationActor _actor;
         private readonly IUseCaseLogger _logger;
-        //dodati u program.cs kontenjer za actora!!!!!!!!
+
+        private static List<int> GloballyAllowerd => new List<int> { 32, 9, 31, 22, 24, 21, 17, 25, 16};
         public UseCaseHandler(IApplicationActor actor, IUseCaseLogger logger)
         {
             _actor = actor;
@@ -36,7 +37,7 @@ namespace Implementation.UseCases
         }
         private void HandleCrossCuttingConcerns(IUseCase useCase, object data)
         {
-            if (!_actor.AllowedUseCases.Contains(useCase.Id))
+            if (!_actor.AllowedUseCases.Contains(useCase.Id) && !GloballyAllowerd.Contains(useCase.Id))
             {
 
                throw new UnauthorizedAccessException();
