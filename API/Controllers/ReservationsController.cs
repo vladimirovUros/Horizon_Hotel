@@ -43,6 +43,13 @@ namespace API.Controllers
             return "value";
         }
 
+        [Authorize]
+        [HttpGet("myreservations")]
+        public IActionResult GetMyReservations([FromQuery] SearchReservation search, [FromServices] IGetReservationsQuery query)
+        {
+            return Ok(_useCaseHandler.HandleQuery(query, search));
+        }
+
         // POST api/<ReservationsController>
         [Authorize]
         [HttpPost]

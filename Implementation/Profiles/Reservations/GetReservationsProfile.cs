@@ -25,6 +25,10 @@ namespace Implementation.Profiles.Reservations
                 .ForMember(
                     dest => dest.CheckOut,
                     opt => opt.MapFrom(src => src.CheckOut)
+                )
+                .ForMember(
+                    dest => dest.UserId,
+                    opt => opt.MapFrom(src => src.UserId)
                 );
         }
     }

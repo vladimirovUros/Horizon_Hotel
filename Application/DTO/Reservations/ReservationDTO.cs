@@ -13,5 +13,6 @@ namespace Application.DTO.Reservations
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public string RoomName { get; set; }
+        public int UserId { get; set; }
     }
 }

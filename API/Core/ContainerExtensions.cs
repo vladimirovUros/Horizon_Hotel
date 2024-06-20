@@ -157,6 +157,7 @@ namespace API.Core
             services.AddTransient<IDeleteReservationCommand, EfDeleteReservationCommand>();
 
             services.AddAutoMapper(typeof(EfGetReservationsQuery).Assembly);
+            services.AddAutoMapper(typeof(EfGetUserReservationsQuery).Assembly);
             services.AddTransient<IGetReservationsQuery, EfGetReservationsQuery>();
 
             services.AddAutoMapper(typeof(EfGetAuditLogsQuery).Assembly);
@@ -164,6 +165,8 @@ namespace API.Core
 
             services.AddTransient<UpdateUserAccessDtoValidator>();
             services.AddTransient<IUpdateUseAccessCommand, EfUpdateUserAcessCommand>();
+
+            services.AddTransient<IGetReservationsQuery, EfGetUserReservationsQuery>();
 
 
 
