@@ -18,6 +18,7 @@ namespace Implementation.UseCases.Commands.Users
     {
         private readonly RegisterUserDtoValidator _validator;
         private readonly IEmailSender _sender;
+        private IEnumerable<int> _useCasesForUser = new List<int> { 3, 5, 21, 22, 23, 24, 25, 27, 28, 29, 32, 35, 36, 41 };
 
         public EfRegisterUserCommand(RegisterUserDtoValidator validator, HotelHorizonContext context, IEmailSender sender)
             : base(context)
@@ -43,65 +44,7 @@ namespace Implementation.UseCases.Commands.Users
                 Password = BCrypt.Net.BCrypt.HashPassword(data.Password),
                 Image = Context.Images.FirstOrDefault(x => x.Path.Contains("defaultuser")),
                 DateOfBirth = data.DateOfBirth.Value,
-                UserUseCases = new List<UserUseCase>
-                {
-                    new UserUseCase
-                    {
-                        UseCaseId = 3
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 5
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 21
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 22
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 23
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 24
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 25
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 27
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 28
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 29
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 32
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 35
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 36
-                    },
-                    new UserUseCase
-                    {
-                        UseCaseId = 41
-                    },
-                }
+                UserUseCases = _useCasesForUser.Select(x => new UserUseCase { UseCaseId = x }).ToList()
             };
 
             Context.Users.Add(user);
