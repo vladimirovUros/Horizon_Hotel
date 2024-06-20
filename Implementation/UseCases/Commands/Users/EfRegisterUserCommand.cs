@@ -96,8 +96,11 @@ namespace Implementation.UseCases.Commands.Users
                     new UserUseCase
                     {
                         UseCaseId = 36
-                    }
-
+                    },
+                    new UserUseCase
+                    {
+                        UseCaseId = 41
+                    },
                 }
             };
 
